@@ -1,0 +1,15 @@
+---
+  - hosts: all
+    remote_user: root
+    become: yes
+    tasks:
+      - name: Get Os Version
+        debug:
+          msg:
+          - "ansible_distribution {{ hostvars[inventory_hostname].ansible_distribution }}"
+          - "major version {{ hostvars[inventory_hostname].ansible_distribution_major_version }}"
+          - "version {{ hostvars[inventory_hostname].ansible_distribution_version }}"
+      - name: echo /etc/os-release
+        ansible.builtin.shell: echo /etc/os-release
+        tags:
+          - shell
