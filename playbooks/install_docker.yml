@@ -42,3 +42,10 @@
           - docker-compose-plugin
         state: latest
         update_cache: true
+    - name: add docker user and group
+      user:
+        name: docker
+        groups: docker
+        append: yes
+
+
