@@ -1,0 +1,20 @@
+---
+- hosts: small
+  remote_user: root
+  name: Installing Docker
+  become: true
+  tasks:
+    - name: Install snapd
+      apt:
+        name: snapd- docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+
+        state: present
+
+    - name: Install lxd
+      community.general.snap:
+        name: lxd
+                     
